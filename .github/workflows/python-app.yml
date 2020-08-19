@@ -60,10 +60,10 @@ jobs:
       run: |
           python3 build_scripts/install_package.py
     - uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact_static_analysis
-          path: |
-            dist
+      with:
+        name: my-artifact_static_analysis
+        path: |
+          dist
     - name: Publish distribution 📦 to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
