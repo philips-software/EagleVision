@@ -1,0 +1,14 @@
+build/
+dist/
+EagleEye.egg-info/
+__pycache__
+.eggs/"version.txt" 
+.eggs/
+htmlcov
+.pytest_cache
+.coverage
+.mutmut-cache
+CC.xml
+dictionary.dic
+jscpd-report.json
+.idea
