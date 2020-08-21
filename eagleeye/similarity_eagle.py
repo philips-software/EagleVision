@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 from functiondefextractor import core_extractor
 from functiondefextractor import condition_checker
-from similarity_processor.similarity_io import SimilarityIO
+from similarity.similarity_io import SimilarityIO
 from eagleeye.base_eagle import BaseEagle
 
 
