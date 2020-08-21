@@ -25,7 +25,7 @@ class SimilarityEagle(BaseEagle):
         val = True
         self.dataframe = core_extractor.extractor(self.get_proj_path(), annot=self.get_annotation(),
                                                   delta=self.get_delta(),
-                                                  regex_pattern=r"%s" % self.get_exclude_extraction())
+                                                  exclude=r"%s" % self.get_exclude_extraction())
         if self.dataframe.empty:
             print("No functions are extracted. Data frame is empty. Recheck your input arguments")
             val = False
