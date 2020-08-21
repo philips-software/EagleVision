@@ -16,6 +16,7 @@ py
 pypa
 txt
 www
+eagleeye
 CHANGELOG
 Commandline
 Cyclomatic
