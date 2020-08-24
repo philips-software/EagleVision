@@ -104,7 +104,7 @@ def test_coverage():
     """
     executes the tests and gates the coverage for greater than 95
     """
-    call_subprocess('python3 -m pytest test --cov-config=.coveragerc --cov-report "html" --cov=eagleeye')
+    call_subprocess('python3 -m pytest test --capture=sys --cov-config=.coveragerc --cov-report "html" --cov=eagleeye')
     call_subprocess("coverage report --fail-under=95")
     call_subprocess("codecov")
     print("Stage test & coverage -- COMPLETED & PASSED --")

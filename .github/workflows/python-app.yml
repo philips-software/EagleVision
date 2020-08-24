@@ -39,7 +39,7 @@ jobs:
             mutation.txt
 
   publish:
-    name: Build , Smoke test , Performance test, and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     needs: build
     runs-on: ubuntu-18.04
     steps:
