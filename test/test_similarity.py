@@ -13,31 +13,31 @@ from eagleeye.similarity_eagle import SimilarityEagle
 class SimilarityEagleTestCase(unittest.TestCase):
     """ Class to test the Similarity_eagle.py"""
 
-    # @classmethod
-    # def tearDown(cls):
-    #     """"Deletes the generated files """
-    #     if os.path.exists(os.path.join(TestResource.report,
-    #                                    "pattern_and_similarity_report", "assert_pattern.xlsx")):
-    #         os.remove(os.path.join(TestResource.report,
-    #                                "pattern_and_similarity_report", "assert_pattern.xlsx"))
-    #     if os.path.exists(os.path.join(TestResource.report,
-    #                                    "pattern_and_similarity_report", "assertPivot.html")):
-    #         os.remove(os.path.join(TestResource.report,
-    #                                "pattern_and_similarity_report", "assertPivot.html"))
-    #     if os.path.exists(os.path.join(TestResource.report,
-    #                                    "pattern_and_similarity_report", "similarity_brief_report.html")):
-    #         os.remove(os.path.join(TestResource.report,
-    #                                "pattern_and_similarity_report", "similarity_brief_report.html"))
-    #     if os.path.exists(os.path.join(TestResource.report,
-    #                                    "pattern_and_similarity_report", "similarity_recommendation_0.xlsx")):
-    #         os.remove(os.path.join(TestResource.report,
-    #                                "pattern_and_similarity_report", "similarity_recommendation_0.xlsx"))
-    #     if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html")):
-    #         os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html"))
-    #     if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report",
-    #                                    "print_pattern.xlsx")):
-    #         os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report",
-    #                                "print_pattern.xlsx"))
+    @classmethod
+    def tearDown(cls):
+        """"Deletes the generated files """
+        if os.path.exists(os.path.join(TestResource.report,
+                                       "pattern_and_similarity_report", "assert_pattern.xlsx")):
+            os.remove(os.path.join(TestResource.report,
+                                   "pattern_and_similarity_report", "assert_pattern.xlsx"))
+        if os.path.exists(os.path.join(TestResource.report,
+                                       "pattern_and_similarity_report", "assertPivot.html")):
+            os.remove(os.path.join(TestResource.report,
+                                   "pattern_and_similarity_report", "assertPivot.html"))
+        if os.path.exists(os.path.join(TestResource.report,
+                                       "pattern_and_similarity_report", "similarity_brief_report.html")):
+            os.remove(os.path.join(TestResource.report,
+                                   "pattern_and_similarity_report", "similarity_brief_report.html"))
+        if os.path.exists(os.path.join(TestResource.report,
+                                       "pattern_and_similarity_report", "similarity_recommendation_0.xlsx")):
+            os.remove(os.path.join(TestResource.report,
+                                   "pattern_and_similarity_report", "similarity_recommendation_0.xlsx"))
+        if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html")):
+            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html"))
+        if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report",
+                                       "print_pattern.xlsx")):
+            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report",
+                                   "print_pattern.xlsx"))
 
     def setUp(self):
         """ Function used to setup the read the console out """
