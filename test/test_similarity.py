@@ -117,8 +117,12 @@ class SimilarityEagleTestCase(unittest.TestCase):
                                          index_col=0)
         expected_dataframe = pd.read_excel(os.path.join(TestResource.tst_resource_folder,
                                                         "golden_assert_pattern.xlsx"), index_col=0)
-        self.assertTrue(actual_dataframe.equals(expected_dataframe), "check  the assertion on xlsx")
 
+        self.assertTrue(actual_dataframe['Uniq ID'].equals(expected_dataframe['Uniq ID']))
+        self.assertTrue(actual_dataframe['Code'].equals(expected_dataframe['Code']))
+        self.assertTrue(actual_dataframe['Count of assert in function'].
+                        equals(expected_dataframe['Count of assert in function']))
+        self.assertTrue(actual_dataframe['assert Statements'].equals(expected_dataframe['assert Statements']))
 
     def test__code_extraction_non_empty_df_no_pattern(self):
         """ Function to test the non empty extraction handling with out pattern an no similarity check"""
