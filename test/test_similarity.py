@@ -122,6 +122,9 @@ class SimilarityEagleTestCase(unittest.TestCase):
         self.assertTrue(actual_dataframe['Code'].equals(expected_dataframe['Code']))
         self.assertTrue(actual_dataframe['Count of assert in function'].
                         equals(expected_dataframe['Count of assert in function']))
+        print("*****************************")
+        print(actual_dataframe['assert Statements'])
+        print(expected_dataframe['assert Statements'])
         self.assertTrue(actual_dataframe['assert Statements'].equals(expected_dataframe['assert Statements']))
 
     def test__code_extraction_non_empty_df_no_pattern(self):
