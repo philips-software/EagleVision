@@ -48,7 +48,7 @@ class SimilarityEagleTestCase(unittest.TestCase):
         """ Function which creates a dummy data frame for testing"""
         data_f = {
             "Uniq ID": [".cpp_BrowserProcessHandler", "cpp_BrowserProcessHandler"],
-            "Code": ["BrowserProcessHandler::BrowserProcessHandler(jobject app_handler) \n{\
+            "Code": ["BrowserProcessHandler::BrowserProcessHandler(jobject app_handler) \n{\n\
                     assertequal = app_handler\n}", "BrowserProcessHandler::~BrowserProcessHandler() {\
             base::AutoLock\
             lock_scope(router_cfg_lock_)\
