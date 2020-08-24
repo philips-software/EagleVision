@@ -14,5 +14,5 @@ vulture==1.3
 versiontag==1.2.0
 wheel==0.34.2
 lipsumAPI==1.1
-functiondefextractor==0.1.0
+functiondefextractor==0.1.1
 similarity-processor==0.1.0

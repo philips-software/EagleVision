@@ -34,8 +34,10 @@ class SimilarityEagleTestCase(unittest.TestCase):
                                    "pattern_and_similarity_report", "similarity_recommendation_0.xlsx"))
         if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html")):
             os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html"))
-        if os.path.exists(os.path.join(TestResource.tst_resource_folder, "print_pattern.xlsx")):
-            os.remove(os.path.join(TestResource.tst_resource_folder, "print_pattern.xlsx"))
+        if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report",
+                                       "print_pattern.xlsx")):
+            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report",
+                                   "print_pattern.xlsx"))
 
     def setUp(self):
         """ Function used to setup the read the console out """
