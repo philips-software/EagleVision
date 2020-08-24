@@ -135,7 +135,8 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj = BaseEagle()
         json_data = baseobj.read_json(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
         baseobj.populate_data(json_data[0])
-        self.assertEqual(baseobj._proj_path, os.path.join(Path(__file__).parent.parent, "test_resource"))
+        self.assertEqual(os.path.normpath(baseobj._proj_path),
+                         os.path.normpath(os.path.join(Path(__file__).parent.parent, "test_resource")))
         self.assertEqual(baseobj._run_extraction, True)
         self.assertEqual(baseobj._run_similarity, True)
         self.assertEqual(baseobj._run_cloc_metric, True)
