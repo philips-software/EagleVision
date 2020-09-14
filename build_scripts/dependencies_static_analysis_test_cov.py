@@ -1,5 +1,6 @@
 """Koninklijke Philips N.V., 2019 - 2020. All rights reserved.
 build script to building the similarity tool"""
+import os
 import platform
 from subprocess_calls import call_subprocess
 from install_dependencies import install_pip
@@ -114,7 +115,8 @@ def mutation_testing():
     """
     executes the mutation tests and gates for 20 percentage
     """
-    call_subprocess("python3 -m mutmut run > mutmut.log || true")
+    func_exit = "(exit 0)" if os.name == 'nt' else "true"
+    call_subprocess("python -m mutmut run || %s" % func_exit)
     call_subprocess("mutmut junitxml --suspicious-policy=ignore --untested-policy=ignore > mutmut.xml")
     call_subprocess("python3 build_scripts/mutmut_parse.py --m 20")
     print("Stage mutation testing -- COMPLETED & PASSED  --")

@@ -23,11 +23,13 @@ class TestResource:
         "cloc_args": "--exclude-dir=src --exclude-ext=*.cpp,*.java",
         "run_cyclomatic_complexity": True,
         "cyclo_args": "-l java  -l python",
-        "cyclo_exclude": ["*.cpp", "*.java"]
+        "cyclo_exclude": ["*.cpp", "*.java"],
+        "report_folder": None
     }
 
     report = os.path.join(tst_resource_folder, "EagleEyeReport")
-    json_path = os.path.join(Path(__file__).parent.parent, "test_resource").replace("\\", "/")
+    source_path = os.path.join(Path(__file__).parent.parent, "test_resource").replace("\\", "/")
+    report_path = os.path.join(Path(__file__).parent.parent).replace("\\", "/")
     json_in = '[{\
                     "path": "%s",\
                     "run_extraction":true,\
@@ -42,8 +44,9 @@ class TestResource:
                     "cloc_args":"--exclude-dir=src --exclude-ext=*.cpp,*.java",\
                     "run_cyclomatic_complexity":true,\
                     "cyclo_args":"-l java  -l python",\
-                    "cyclo_exclude":["*.cpp","*.java"]\
-                    }]' % json_path
+                    "cyclo_exclude":["*.cpp","*.java"],\
+                    "report_folder": "%s"\
+                    }]' % (source_path, report_path)
 
     @staticmethod
     def write_json(name, json_in):
@@ -51,3 +54,17 @@ class TestResource:
         file = open(os.path.join(Path(__file__).parent.parent, "test_resource", name), "w")
         file.write(json_in)
         file.close()
+
+    @staticmethod
+    def get_result_file_name(folder_name, file_starts):
+        """ Function to return file name when sub string name is given"""
+        prefixed = [filename for filename in os.listdir(os.path.join(os.path.dirname(__file__),
+                                                                     os.pardir, "test_resource", "EagleEyeReport",
+                                                                     folder_name))
+                    if filename.startswith(file_starts)]
+        if not len(prefixed) == 1:
+            str1 = None
+            print("unable to identify file")
+        else:
+            str1 = ''.join(prefixed)
+        return os.path.join(os.path.dirname(__file__), os.pardir, "test_resource", "EagleEyeReport", folder_name, str1)

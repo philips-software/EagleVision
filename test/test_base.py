@@ -55,6 +55,7 @@ class EagleBaseTestCase(unittest.TestCase):
         self.assertEqual(baseobj._cloc_args, None)
         self.assertEqual(baseobj._cyclo_args, None)
         self.assertEqual(baseobj._similarity_range, None)
+        self.assertEqual(baseobj._report_folder, None)
 
     def test_set_get_class_var(self):
         """ Function to test the base class with a set init values """
@@ -89,6 +90,10 @@ class EagleBaseTestCase(unittest.TestCase):
         self.assertEqual(baseobj.get_cyclo_args(), "_cyclo_args")
         baseobj._similarity_range = "_similarity_range"
         self.assertEqual(baseobj.get_similarity_range(), "_similarity_range")
+        baseobj._report_folder = "report_path"
+        self.assertEqual(baseobj.get_report_folder(), "report_path")
+        baseobj._report_folder = None
+        self.assertEqual(baseobj.get_report_folder(), "random_path")
         baseobj._run_similarity = None
         baseobj._run_cloc_metric = None
         baseobj._run_cyclomatic_complexity = None
@@ -150,6 +155,8 @@ class EagleBaseTestCase(unittest.TestCase):
         self.assertEqual(baseobj._cloc_args, "--exclude-dir=src --exclude-ext=*.cpp,*.java")
         self.assertEqual(baseobj._cyclo_args, "-l java  -l python")
         self.assertEqual(baseobj._similarity_range, "70,100")
+        self.assertEqual(os.path.normpath(baseobj._report_folder),
+                         os.path.normpath(os.path.join(Path(__file__).parent.parent)))
 
     def test_specific_string_getters(self):
         """ Function to validate few json items when the input json is null """

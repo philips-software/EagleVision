@@ -15,29 +15,9 @@ class SimilarityEagleTestCase(unittest.TestCase):
 
     @classmethod
     def tearDown(cls):
-        """"Deletes the generated files """
-        if os.path.exists(os.path.join(TestResource.report,
-                                       "pattern_and_similarity_report", "assert_pattern.xlsx")):
-            os.remove(os.path.join(TestResource.report,
-                                   "pattern_and_similarity_report", "assert_pattern.xlsx"))
-        if os.path.exists(os.path.join(TestResource.report,
-                                       "pattern_and_similarity_report", "assertPivot.html")):
-            os.remove(os.path.join(TestResource.report,
-                                   "pattern_and_similarity_report", "assertPivot.html"))
-        if os.path.exists(os.path.join(TestResource.report,
-                                       "pattern_and_similarity_report", "similarity_brief_report.html")):
-            os.remove(os.path.join(TestResource.report,
-                                   "pattern_and_similarity_report", "similarity_brief_report.html"))
-        if os.path.exists(os.path.join(TestResource.report,
-                                       "pattern_and_similarity_report", "similarity_recommendation_0.xlsx")):
-            os.remove(os.path.join(TestResource.report,
-                                   "pattern_and_similarity_report", "similarity_recommendation_0.xlsx"))
-        if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html")):
-            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report", "printPivot.html"))
-        if os.path.exists(os.path.join(TestResource.report, "pattern_and_similarity_report",
-                                       "print_pattern.xlsx")):
-            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report",
-                                   "print_pattern.xlsx"))
+        filelist = [temp_f for temp_f in os.listdir(os.path.join(TestResource.report, "pattern_and_similarity_report"))]
+        for temp_f in filelist:
+            os.remove(os.path.join(TestResource.report, "pattern_and_similarity_report", temp_f))
 
     def setUp(self):
         """ Function used to setup the read the console out """
@@ -83,8 +63,6 @@ class SimilarityEagleTestCase(unittest.TestCase):
             else:
                 self.assertTrue(len(list(filter(None, matches))),
                                 "mock is not called, no print seen")  # pylint: disable= C1801
-            self.assertEqual(False, os.path.isfile(os.path.join(TestResource.report,
-                                                                "pattern_and_similarity_report", "cloc-report.html")))
             self.assertEqual(similarityobj.report_path, os.path.join(TestResource.report,
                                                                      "pattern_and_similarity_report"))
             self.assertTrue(mocked_class.called)
@@ -104,17 +82,16 @@ class SimilarityEagleTestCase(unittest.TestCase):
             self.assertTrue(mocked_class.called)
             self.assertEqual(similarityobj.report_path,
                              os.path.join(TestResource.report, "pattern_and_similarity_report"))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "assertPivot.html")))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "assert_pattern.xlsx")))
-        actual_dataframe = pd.read_html(os.path.join(TestResource.report,
-                                                     "pattern_and_similarity_report", "assertPivot.html"))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "assertPivot")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "assert_pattern")))
+        actual_dataframe = pd.read_html(TestResource.get_result_file_name(
+            "pattern_and_similarity_report", "assertPivot"))
         expected_dataframe = pd.read_html(os.path.join(TestResource.tst_resource_folder, "golden_assertPivot.html"))
         assert_frame_equal(actual_dataframe[0], expected_dataframe[0], "check  the assertion on html")
-        actual_dataframe = pd.read_excel(os.path.join(TestResource.report,
-                                                      "pattern_and_similarity_report", "assert_pattern.xlsx"),
-                                         index_col=0)
+        actual_dataframe = pd.read_excel(TestResource.get_result_file_name(
+            "pattern_and_similarity_report", "assert_pattern"), index_col=0)
         expected_dataframe = pd.read_excel(os.path.join(TestResource.tst_resource_folder,
                                                         "golden_assert_pattern.xlsx"), index_col=0)
 
@@ -161,14 +138,14 @@ class SimilarityEagleTestCase(unittest.TestCase):
             TestResource.input_json["run_similarity"] = False
             similarityobj.orchestrate_similarity(TestResource.input_json)
             self.assertTrue(mocked_class.called)
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "assertPivot.html")))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "printPivot.html")))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "assert_pattern.xlsx")))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report", "print_pattern.xlsx")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "assertPivot")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "printPivot")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "assert_pattern")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "print_pattern")))
 
     def test_similarity_check_with_mock_extraction(self):
         """ Function to test the similarity check"""
@@ -183,21 +160,18 @@ class SimilarityEagleTestCase(unittest.TestCase):
             self.assertTrue(mocked_class.called)
             self.assertEqual(similarityobj.report_path, os.path.join(TestResource.report,
                                                                      "pattern_and_similarity_report"))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report",
-                                                        "similarity_recommendation_0.xlsx")))
-            self.assertTrue(os.path.isfile(os.path.join(TestResource.report,
-                                                        "pattern_and_similarity_report",
-                                                        "similarity_brief_report.html")))
-            actual_dataframe = pd.read_excel(os.path.join(TestResource.report,
-                                                          "pattern_and_similarity_report",
-                                                          "similarity_recommendation_0.xlsx"), index_col=0)
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "similarity_recommendation_0")))
+            self.assertTrue(os.path.isfile(TestResource.get_result_file_name(
+                "pattern_and_similarity_report",
+                "similarity_brief_report")))
+            actual_dataframe = pd.read_excel(TestResource.get_result_file_name(
+                "pattern_and_similarity_report", "similarity_recommendation_0"), index_col=0)
             expected_dataframe = pd.read_excel(os.path.join(TestResource.tst_resource_folder,
                                                             "golden_similarity_recommendation_0.xlsx"), index_col=0)
             self.assertTrue(actual_dataframe.equals(expected_dataframe))
-            actual_dataframe = pd.read_html(os.path.join
-                                            (TestResource.report, "pattern_and_similarity_report",
-                                             "similarity_brief_report.html"))
+            actual_dataframe = pd.read_html(TestResource.get_result_file_name("pattern_and_similarity_report",
+                                                                              "similarity_brief_report"))
             expected_dataframe = pd.read_html(os.path.join(TestResource.tst_resource_folder,
                                                            "golden_similarity_brief_report.html"))
             assert_frame_equal(actual_dataframe[0], expected_dataframe[0])

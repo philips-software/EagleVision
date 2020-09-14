@@ -2,6 +2,8 @@
 
 import os
 import os.path
+import datetime
+import time
 from pathlib import Path
 import pandas as pd
 from functiondefextractor import core_extractor
@@ -31,6 +33,11 @@ class SimilarityEagle(BaseEagle):
             val = False
         return val
 
+    @staticmethod
+    def get_timestamp():
+        """ Function to get timestamp"""
+        return str(datetime.datetime.fromtimestamp(time.time()).strftime('%H-%M-%S_%d_%m_%Y'))  # pragma: no mutate
+
     def __code_pattern_analyzer__(self):
         """" Function to extract patterns from the source code fetched in to the dataframe """
 
@@ -40,7 +47,8 @@ class SimilarityEagle(BaseEagle):
                 data, pattern = condition_checker.check_condition(str(self.get_pattern()[i]), self.dataframe,
                                                                   pattern_sep)
                 self.__report_xlsx__(data, "%s_pattern" % self.get_pattern()[i])
-                pattern.to_html("%s.html" % os.path.join(self.report_path, self.get_pattern()[i] + "Pivot"))
+                pattern.to_html("%s.html" % os.path.join(self.report_path, self.get_pattern()[i] + "Pivot_" +
+                                                         self.get_timestamp()))
         else:
             print("The pattern input is expected to be list and should be of same length as pattern separators")
 
@@ -62,7 +70,7 @@ class SimilarityEagle(BaseEagle):
         """ Function which write the dataframe to xlsx """
         file_path = os.path.join(self.report_path, name)
         # Github open ticket for the abstract method
-        writer = pd.ExcelWriter("%s.xlsx" % file_path, engine="xlsxwriter")  # pylint: disable=E0110
+        writer = pd.ExcelWriter("%s_%s.xlsx" % (file_path, self.get_timestamp()), engine="xlsxwriter")
         data_f.to_excel(writer, sheet_name=name)
         writer.save()
 

@@ -28,8 +28,15 @@ class BaseEagle:  # pylint: disable=R0902
         self._cloc_args = None
         self._cyclo_args = None
         self._similarity_range = None
+        self._report_folder = None
 
     # getter methods
+    def get_report_folder(self):
+        """
+        Returns: project path
+        """
+        return self._proj_path if self._report_folder is None else self._report_folder
+
     def get_proj_path(self):
         """
         Returns: project path
@@ -122,7 +129,7 @@ class BaseEagle:  # pylint: disable=R0902
 
     def get_report_path(self):
         """ Function to set the root level report folder name"""
-        self._report_path = os.path.join(self._proj_path, "EagleEyeReport")
+        self._report_path = os.path.join(self.get_report_folder(), "EagleEyeReport")
         return self._report_path
 
     def get_similarity_range(self):
@@ -174,6 +181,7 @@ class BaseEagle:  # pylint: disable=R0902
         self._delta = input_data["extraction_delta"]
         self._exclude_extraction = input_data["extraction_exclude"]
         self._similarity_range = input_data["similarity_range"]
+        self._report_folder = input_data["report_folder"]
 
     @staticmethod
     def report_html(file_path, html_data_frame, report_type):
@@ -196,4 +204,5 @@ class BaseEagle:  # pylint: disable=R0902
                 classes='mystyle')).replace(r'\r\n', "<br>").
                             replace(r'\n', "<br>").replace(r'\r', "<br>"))  # pragma: no mutate
         shutil.copy(os.path.join(os.path.dirname(__file__),
-                                 "report_style.css"), os.path.join(folder_path, "report_style.css"))  # pragma: no mutate
+                                 "report_style.css"),
+                    os.path.join(folder_path, "report_style.css"))  # pragma: no mutate
