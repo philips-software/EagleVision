@@ -46,9 +46,10 @@ class SimilarityEagle(BaseEagle):
                 pattern_sep = str(self.get_pattern_seperator()[i]) if self.get_pattern_seperator()[i] else None
                 data, pattern = condition_checker.check_condition(str(self.get_pattern()[i]), self.dataframe,
                                                                   pattern_sep)
-                self.__report_xlsx__(data, "%s_pattern" % self.get_pattern()[i])
-                pattern.to_html("%s.html" % os.path.join(self.report_path, self.get_pattern()[i] + "Pivot_" +
-                                                         self.get_timestamp()))
+                if self.get_run_pattern_match():
+                    self.__report_xlsx__(data, "%s_pattern" % self.get_pattern()[i])
+                    pattern.to_html("%s.html" % os.path.join(self.report_path, self.get_pattern()[i] + "Pivot_" +
+                                                             self.get_timestamp()))
         else:
             print("The pattern input is expected to be list and should be of same length as pattern separators")
 
@@ -82,17 +83,14 @@ class SimilarityEagle(BaseEagle):
     def orchestrate_similarity(self, json):
         """ Function which orchestrate the similarity execution"""
         self.populate_data(json)
-        print("\n\n=================================")  # pragma: no mutate
+        print("\n\n_____________________________")  # pragma: no mutate
         print("Please wait while [Code Similarity Tool] process your inputs")  # pragma: no mutate
-        print("This will take couple of minutes based on the folder size\n")  # pragma: no mutate
         self.__set_report_path__()
         if self.__code_extraction__():
-            print(
-                "[Code Similarity Tool] have completed extracting the functions from the folder ")  # pragma: no mutate
             self.__code_pattern_analyzer__()
             print("[Code Similarity Tool] have completed extracting the pattern check")  # pragma: no mutate
             if self.get_run_similarity():
                 self.__code_similarity__()
-                print("[Code Similarity Tool] have completed Similarity analysis")  # pragma: no mutate
-            print("\n\n[Code Similarity Tool] saved the reports @ %s" % self.report_path)  # pragma: no mutate
-            print("=================================")  # pragma: no mutate
+                print("\n[Code Similarity Tool] have completed Similarity analysis, "  # pragma: no mutate
+                      "reports @ %s" % self.report_path)  # pragma: no mutate
+            print("_____________________________")  # pragma: no mutate

@@ -127,7 +127,7 @@ class ClocEagleTestCase(unittest.TestCase):
         self.dummy_dataf()
         cloceagleobj.orchestrate_cloc(TestResource.input_json)
         out_str = (sys.stdout.getvalue().split('\n'))
-        matches = [c for c in out_str if c in 'There was error while processing the sub process command']
+        matches = [c for c in out_str if 'There was error while processing the sub process command' in c]
         self.assertEqual(len(list(filter(None, matches))), 1)
         self.assertEqual(matches[0], 'There was error while processing the sub process command')
         self.assertEqual(False, os.path.isfile(os.path.join(TestResource.report, "cloc_report", "cloc-report.html")))

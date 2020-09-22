@@ -55,8 +55,8 @@ class SimilarityEagleTestCase(unittest.TestCase):
         with mock.patch('functiondefextractor.core_extractor.extractor', mocked_class):
             similarityobj.orchestrate_similarity(TestResource.input_json)
             out_str = (sys.stdout.getvalue().split('\n'))
-            matches = [c for c in out_str if c in 'No functions are extracted. Data frame is empty. Recheck your ' \
-                                                  'input arguments']
+            matches = [c for c in out_str if 'No functions are extracted. Data frame is empty. Recheck your ' \
+                                             'input arguments' in c]
             if len(list(filter(None, matches))):  # pylint: disable= C1801
                 self.assertEqual(list(filter(None, matches))[0], 'No functions are extracted. Data frame is empty. '
                                                                  'Recheck your input arguments')
@@ -117,8 +117,8 @@ class SimilarityEagleTestCase(unittest.TestCase):
             similarityobj.orchestrate_similarity(TestResource.input_json)
             out_str = (sys.stdout.getvalue().split('\n'))
             matches = [c for c in out_str if
-                       c in 'The pattern input is expected to be list and should be of same length as pattern ' \
-                            'separators']
+                       'The pattern input is expected to be list and should be of same length as pattern ' \
+                       'separators' in c]
             self.assertEqual(len(list(filter(None, matches))), 1)
             self.assertTrue(mocked_class.called)
             self.assertFalse(os.path.isfile(os.path.join(TestResource.report, "pattern_and_similarity_report",

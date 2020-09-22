@@ -61,14 +61,14 @@ class EagleEye(BaseEagle):
             self.populate_data(json_data[data])
             try:
                 toggle = [self.get_run_cloc_metric(), self.get_run_cyclomatic_complexity(),
-                          self.get_run_similarity(), self.get_run_extraction()]
+                          self.get_run_similarity() or self.get_run_pattern_match()]
                 function_dict = {
                     "CYCLOEXE": lambda: self.__eaglewatch_cyclo__(json_data[data]), # pylint: disable=W0640
                     "CLOCEXE": lambda: self.__eaglewatch_cloc__(json_data[data]), # pylint: disable=W0640
                     "SIMEXE": lambda: self.__eaglewatch_similarity__(json_data[data]), # pylint: disable=W0640
                     "": lambda: self.__empty_call() # pylint: disable=W0108
                 }
-                for i in range(0, 4):
+                for i in range(0, 3):
                     func = toggle[i]
                     function_dict[func]()
             except KeyError:

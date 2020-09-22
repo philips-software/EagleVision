@@ -11,7 +11,7 @@ class TestResource:
     par_dir = os.path.join(os.path.dirname(__file__), os.pardir)
     input_json = {
         "path": "%s" % tst_resource_folder,
-        "run_extraction": True,
+        "run_pattern_match": True,
         "run_similarity": True,
         "extraction_annotation": None,
         "extraction_delta": None,
@@ -32,7 +32,7 @@ class TestResource:
     report_path = os.path.join(Path(__file__).parent.parent).replace("\\", "/")
     json_in = '[{\
                     "path": "%s",\
-                    "run_extraction":true,\
+                    "run_pattern_match":true,\
                     "run_similarity":true,\
                     "extraction_annotation":"@test",\
                     "extraction_delta":5,\

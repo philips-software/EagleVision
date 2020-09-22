@@ -139,7 +139,7 @@ class CycloEagleTestCase(unittest.TestCase):
         cycloeagleobj = CyclomaticEagle()
         cycloeagleobj.orchestrate_cyclomatic(TestResource.input_json)
         out_str = (sys.stdout.getvalue().split('\n'))
-        matches = [c for c in out_str if c in 'There was error while processing the sub process command']
+        matches = [c for c in out_str if 'There was error while processing the sub process command' in c]
         self.assertEqual(matches[0], 'There was error while processing the sub process command')
         self.assertEqual(False, os.path.isfile(os.path.join(TestResource.report,
                                                             "cyclomatic_report", "cyclomatic-complexity-report.html")))

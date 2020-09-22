@@ -41,7 +41,7 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj = BaseEagle()
         self.assertEqual(baseobj.input_dict, dict())
         self.assertEqual(baseobj._proj_path, None)
-        self.assertEqual(baseobj._run_extraction, None)
+        self.assertEqual(baseobj._run_pattern_match, None)
         self.assertEqual(baseobj._run_similarity, None)
         self.assertEqual(baseobj._run_cloc_metric, None)
         self.assertEqual(baseobj._run_cyclomatic_complexity, None)
@@ -62,8 +62,8 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj = BaseEagle()
         baseobj._proj_path = "random_path"
         self.assertEqual(baseobj.get_proj_path(), "random_path")
-        baseobj._run_extraction = "_run_extraction"
-        self.assertEqual(baseobj.get_run_extraction(), "SIMEXE")
+        baseobj._run_pattern_match = "_run_extraction"
+        self.assertEqual(baseobj.get_run_pattern_match(), "SIMEXE")
         baseobj._run_similarity = "_run_similarity"
         self.assertEqual(baseobj.get_run_similarity(), "SIMEXE")
         baseobj._run_cloc_metric = "_run_cloc_metric"
@@ -142,7 +142,7 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj.populate_data(json_data[0])
         self.assertEqual(os.path.normpath(baseobj._proj_path),
                          os.path.normpath(os.path.join(Path(__file__).parent.parent, "test_resource")))
-        self.assertEqual(baseobj._run_extraction, True)
+        self.assertEqual(baseobj._run_pattern_match, True)
         self.assertEqual(baseobj._run_similarity, True)
         self.assertEqual(baseobj._run_cloc_metric, True)
         self.assertEqual(baseobj._run_cyclomatic_complexity, True)
@@ -164,12 +164,12 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj = BaseEagle()
         json_data = baseobj.read_json(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
         json_data[0]["run_similarity"] = None
-        json_data[0]["run_extraction"] = None
+        json_data[0]["run_pattern_match"] = None
         json_data[0]["run_cloc_metric"] = None
         json_data[0]["run_cyclomatic_complexity"] = None
         baseobj.populate_data(json_data[0])
         self.assertEqual(baseobj.get_run_similarity(), "")
-        self.assertEqual(baseobj.get_run_extraction(), "")
+        self.assertEqual(baseobj.get_run_pattern_match(), "")
         self.assertEqual(baseobj.get_run_cloc_metric(), "")
         self.assertEqual(baseobj.get_run_cyclomatic_complexity(), "")
 

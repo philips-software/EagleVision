@@ -25,10 +25,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Upgrade pip
         run: |
-          python3 -m pip install --upgrade pip
+          python -m pip install --upgrade pip
       - name: Install dependencies Conduct Static analysis Test Coverage Mutation
         run: |
-          python3 build_scripts/dependencies_static_analysis_test_cov.py
+          python build_scripts/dependencies_static_analysis_test_cov.py
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact_static_analysis
@@ -52,13 +52,13 @@ jobs:
         python-version: 3.8
     - name: Install the dependencies
       run: |
-        python3 build_scripts/install_dependencies.py
+        python build_scripts/install_dependencies.py
     - name: Build a binary wheel and a source tarball
       run: |
-        python3 setup.py sdist bdist_wheel
+        python setup.py sdist bdist_wheel
     - name: Install newly created wheel
       run: |
-          python3 build_scripts/install_package.py
+          python build_scripts/install_package.py
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact_static_analysis

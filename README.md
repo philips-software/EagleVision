@@ -20,6 +20,8 @@ Tool to identify and report
 
 - cloc package `npm i -g cloc@2.6.0` `https://www.npmjs.com/package/cloc`
 
+- third party packages [Ctags, grep]
+
 ## Installation
   
 [INSTALL.md](INSTALL.md)

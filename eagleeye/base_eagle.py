@@ -14,7 +14,7 @@ class BaseEagle:  # pylint: disable=R0902
         """ Constructor for the class """
         self.input_dict = dict()
         self._proj_path = None
-        self._run_extraction = None
+        self._run_pattern_match = None
         self._run_similarity = None
         self._run_cloc_metric = None
         self._run_cyclomatic_complexity = None
@@ -43,12 +43,12 @@ class BaseEagle:  # pylint: disable=R0902
         """
         return self._proj_path
 
-    def get_run_extraction(self):
+    def get_run_pattern_match(self):
         """
         Returns:  project extraction yes or no
         """
         ret_val = ""
-        if self._run_extraction:
+        if self._run_pattern_match:
             ret_val = "SIMEXE"
         return ret_val
 
@@ -167,7 +167,7 @@ class BaseEagle:  # pylint: disable=R0902
     def __json_to_var(self, input_data):
         """ Function to set the value of the json input to class variable """
         self._proj_path = input_data["path"]
-        self._run_extraction = input_data["run_extraction"]
+        self._run_pattern_match = input_data["run_pattern_match"]
         self._run_similarity = input_data["run_similarity"]
         self._run_cloc_metric = input_data["run_cloc_metric"]
         self._cyclo_exclude = input_data["cyclo_exclude"]

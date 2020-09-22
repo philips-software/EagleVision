@@ -41,10 +41,11 @@ class CyclomaticEagle(BaseEagle):
         """ Function to report the cyclomatic complexity execution report """
         dataframe = pd.read_csv(os.path.join(self.report_path, "cyclomatic-complexity.csv"),
                                 names=["NLOC", "CCN", "Token", "Param", "Length", "Location",
-                                       "Path", "Function", "Args", "Row", "Col"])
+                                       "Path", "Function", "Args", "Row", "Col"],
+                                sep=',')
         dataframe.drop(['Path', 'Function', 'Row', 'Col'], axis=1, inplace=True)
         dataframe.sort_values('CCN', ascending=False, inplace=True)
-
+        dataframe["Location"] = dataframe["Location"].str.replace('\\', '/')
         self.report_html(os.path.join(self.report_path,
                                       "cyclomatic-complexity-report.html"), dataframe,
                          "Cyclomatic Complexity report")
@@ -56,8 +57,12 @@ class CyclomaticEagle(BaseEagle):
 
     def orchestrate_cyclomatic(self, json):
         """ Function which orchestrate the cyclomatic complexity  execution"""
+        print("\n\n_____________________________")  # pragma: no mutate
+        print("Please wait while [Cyclomatic analysis Tool] process your inputs")  # pragma: no mutate
         self.populate_data(json)
         self.__set_report_path()
         self.__cmd_builder()
         if not self.__subprocess_out():
             self.__report()
+            print("\n\n[Cyclomatic analysis Tool] saved the reports @ %s" % self.report_path)  # pragma: no mutate
+            print("_____________________________")  # pragma: no mutate

@@ -54,8 +54,12 @@ class ClocEagle(BaseEagle): # pylint: disable=R0903
 
     def orchestrate_cloc(self, json):
         """ Function which orchestrate the cloc execution"""
+        print("\n\n_____________________________")  # pragma: no mutate
+        print("Please wait while [Cloc analysis Tool] process your inputs")  # pragma: no mutate
         self.populate_data(json)
         self.__set_report_path()
         self.__cmd_builder()
         if not self.__subprocess_out():
             self.__report()
+            print("\n\n[Cloc analysis Tool] saved the reports @ %s" % self.report_path)  # pragma: no mutate
+            print("_____________________________")  # pragma: no mutate
