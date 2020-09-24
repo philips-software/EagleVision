@@ -53,7 +53,7 @@ Tool to identify and report
     "run_cyclomatic_complexity":true,
     "cyclo_args": "-l java  -l python",
     "cyclo_exclude": ["*.cpp","*.java"],
-	"report_folder": null
+    "report_folder": null
   }
 ]
 ```

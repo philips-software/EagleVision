@@ -56,3 +56,4 @@ htm
 http
 sourceforge
 wikipedia
+wiki
