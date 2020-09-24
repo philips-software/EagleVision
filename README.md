@@ -40,11 +40,11 @@ Tool to identify and report
 [
   {
     "path": "repo/path",
-    "run_extraction":true,
+    "run_pattern_match":true,
     "run_similarity":true,
     "extraction_annotation": null,
     "extraction_delta": null,
-    "extraction_exclude": "*.cpp",
+    "extraction_exclude": "*/test_resource/*",
     "pattern_match": ["assert"],
     "pattern_seperator": ["("],
     "similarity_range": "70,100",
@@ -52,7 +52,8 @@ Tool to identify and report
     "cloc_args": "--exclude-dir=src --exclude-ext=*.cpp,*.java",
     "run_cyclomatic_complexity":true,
     "cyclo_args": "-l java  -l python",
-    "cyclo_exclude": ["*.cpp","*.java"]
+    "cyclo_exclude": ["*.cpp","*.java"],
+	"report_folder": null
   }
 ]
 ```
