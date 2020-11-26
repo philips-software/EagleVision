@@ -30,7 +30,7 @@ setuptools.setup(
     description="EagleVision",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/philips-software/TextSimilarityProcessor",
+    url="https://github.com/philips-internal/EagleVision",
     packages=setuptools.find_packages(include=['eaglevision'],
                                       exclude=['test', '*.test', '*.test.*']),
     package_data={'': [r'eaglevision/report_style.css']},
