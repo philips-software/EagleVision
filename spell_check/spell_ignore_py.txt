@@ -26,5 +26,6 @@ JSCPD
 mutmut
 LOC
 cloc
+substring
 cyclomatic
 json

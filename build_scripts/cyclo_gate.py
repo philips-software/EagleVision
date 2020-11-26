@@ -27,7 +27,7 @@ class CycloGate():
           root (etree node): root node of the parsed xml
 
         Returns:
-        (int) index of CNN in th xml
+        (int) index of CNN in the xml
         """
         count = 0
         val = None
