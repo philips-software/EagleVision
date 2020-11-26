@@ -57,7 +57,7 @@ def check_yml_linting():
     """
     function check the repo for any yml linting errors
     """
-    call_subprocess("yamllint .github/workflows/*.yml ")
+    call_subprocess("yamllint -d relaxed .github/workflows/*.yml ")
     print("Stage linting yml -- COMPLETED & PASSED  --")
 
 
