@@ -129,7 +129,7 @@ class BaseEagle:  # pylint: disable=R0902
 
     def get_report_path(self):
         """ Function to set the root level report folder name"""
-        self._report_path = os.path.join(self.get_report_folder(), "EagleEyeReport")
+        self._report_path = os.path.join(self.get_report_folder(), "EagleVisionReport")
         return self._report_path
 
     def get_similarity_range(self):

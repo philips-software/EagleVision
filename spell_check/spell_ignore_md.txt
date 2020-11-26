@@ -16,13 +16,13 @@ py
 pypa
 txt
 www
-eagleeye
+EagleVision
+EagleVisionReport
 MERCHANTABILITY
 CHANGELOG
 Commandline
 Cyclomatic
-EagleEye
-EagleEyeReport
+eaglevision
 LOC
 TBD
 args

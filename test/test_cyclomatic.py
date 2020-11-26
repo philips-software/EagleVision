@@ -9,7 +9,7 @@ from pathlib import Path
 from test.test_support import TestResource
 import pandas as pd
 import numpy as np
-from eagleeye.cyclomatic_eagle import CyclomaticEagle
+from eaglevision.cyclomatic_eagle import CyclomaticEagle
 
 
 class CycloEagleTestCase(unittest.TestCase):

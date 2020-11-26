@@ -3,7 +3,7 @@ import os
 import subprocess
 from pathlib import Path
 import pandas as pd
-from eagleeye.base_eagle import BaseEagle
+from eaglevision.base_eagle import BaseEagle
 
 
 class CyclomaticEagle(BaseEagle):
@@ -57,7 +57,7 @@ class CyclomaticEagle(BaseEagle):
 
     def orchestrate_cyclomatic(self, json):
         """ Function which orchestrate the cyclomatic complexity  execution"""
-        print("\n\n_____________________________")  # pragma: no mutate
+        print("\n\n=================================")  # pragma: no mutate
         print("Please wait while [Cyclomatic analysis Tool] process your inputs")  # pragma: no mutate
         self.populate_data(json)
         self.__set_report_path()
@@ -65,4 +65,4 @@ class CyclomaticEagle(BaseEagle):
         if not self.__subprocess_out():
             self.__report()
             print("\n\n[Cyclomatic analysis Tool] saved the reports @ %s" % self.report_path)  # pragma: no mutate
-            print("_____________________________")  # pragma: no mutate
+            print("=================================")  # pragma: no mutate

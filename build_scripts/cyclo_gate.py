@@ -74,7 +74,7 @@ class CycloGate():
             sys.exit(1)
 
     def parse_cyclo_report_xml(self, xml_file):
-        """ Function usd to fetch the necessary data from the xml output - lizard
+        """ Function used to fetch the necessary data from the xml output - lizard
 
         Parameters:
           xml_file (string): path to the xml file to be parsed
@@ -108,7 +108,7 @@ class CycloGate():
           message (string): message to be printed.
 
         Returns:
-        sub-process return value. TODO
+        sub-process return value.
         """
 
         if val:

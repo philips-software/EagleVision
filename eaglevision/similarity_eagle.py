@@ -9,7 +9,7 @@ import pandas as pd
 from functiondefextractor import core_extractor
 from functiondefextractor import condition_checker
 from similarity.similarity_io import SimilarityIO
-from eagleeye.base_eagle import BaseEagle
+from eaglevision.base_eagle import BaseEagle
 
 
 class SimilarityEagle(BaseEagle):
@@ -83,14 +83,17 @@ class SimilarityEagle(BaseEagle):
     def orchestrate_similarity(self, json):
         """ Function which orchestrate the similarity execution"""
         self.populate_data(json)
-        print("\n\n_____________________________")  # pragma: no mutate
-        print("Please wait while [Code Similarity Tool] process your inputs")  # pragma: no mutate
+        print("\n\n=================================")  # pragma: no mutate
+        print("Please wait while input is processed")  # pragma: no mutate
         self.__set_report_path__()
         if self.__code_extraction__():
+            print("Please wait while [Pattern matching tool] process your inputs")  # pragma: no mutate
             self.__code_pattern_analyzer__()
-            print("[Code Similarity Tool] have completed extracting the pattern check")  # pragma: no mutate
+            print("[Pattern matching tool] have completed extracting the pattern check")  # pragma: no mutate
             if self.get_run_similarity():
+                print("Please wait while [Code Similarity Tool]"
+                      " process your inputs, This will take a while")  # pragma: no mutate
                 self.__code_similarity__()
                 print("\n[Code Similarity Tool] have completed Similarity analysis, "  # pragma: no mutate
                       "reports @ %s" % self.report_path)  # pragma: no mutate
-            print("_____________________________")  # pragma: no mutate
+            print("=================================")  # pragma: no mutate

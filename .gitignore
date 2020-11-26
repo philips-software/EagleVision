@@ -1,8 +1,8 @@
 build/
 dist/
-EagleEye.egg-info/
+EagleVision.egg-info/
 __pycache__
-.eggs/"version.txt" 
+.eggs/"version.txt"
 .eggs/
 htmlcov
 .pytest_cache

@@ -1,17 +1,17 @@
 """Koninklijke Philips N.V., 2019 - 2020. All rights reserved."""
 
 import argparse
-from eagleeye.cloc_eagle import ClocEagle
-from eagleeye.base_eagle import BaseEagle
-from eagleeye.cyclomatic_eagle import CyclomaticEagle
-from eagleeye.similarity_eagle import SimilarityEagle
+from eaglevision.cloc_eagle import ClocEagle
+from eaglevision.base_eagle import BaseEagle
+from eaglevision.cyclomatic_eagle import CyclomaticEagle
+from eaglevision.similarity_eagle import SimilarityEagle
 
 
 def create_parser(args):
     """ Function which add the command line arguments required for the command line input
     of text similarity index processor"""
     # Create the parser
-    cos_parser = argparse.ArgumentParser(description='EagleEye')
+    cos_parser = argparse.ArgumentParser(description='EagleVision')
 
     # Add the arguments
     cos_parser.add_argument("--path",
@@ -22,12 +22,12 @@ def create_parser(args):
     return cos_parser.parse_args(args)
 
 
-class EagleEye(BaseEagle):
+class EagleVision(BaseEagle):
     """ Class which consolidates the matrices on Similarity, Cyclomatic Complexity, Cloc """
 
     def __init__(self, json_path):
         """ Constructor for the class """
-        super(EagleEye)
+        super(EagleVision)
         super().__init__()
         self.json_path = json_path
 

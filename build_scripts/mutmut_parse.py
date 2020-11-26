@@ -32,7 +32,7 @@ def check_pass_fail(failure, total, allow_fail_per):
 
 
 def parse_mutmut_report_xml(allow_fail):
-    """ Function usd to fetch the necessary data from the xml output - mutmut"""
+    """ Function used to fetch the necessary data from the xml output - mutmut"""
     try:
         root = ET.parse("mutmut.xml").getroot()
         disabled = int(root.get("disabled"))

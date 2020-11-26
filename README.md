@@ -1,4 +1,4 @@
-# EagleEye
+# EagleVision
 
 Tool to identify and report
 
@@ -31,7 +31,7 @@ Tool to identify and report
 ### Commandline
 
 ```sh
->>>python -m eagleeye --p "path\to\input\json"
+>>>python -m eaglevision --p "path\to\input\json"
 ```
 
 - sample json input,  
@@ -81,7 +81,7 @@ refer https://pypi.org/project/similarity-processor/ for similarity
 
 ### Output
   
-- Output will be available in same folder as `path` given in json under  `EagleEyeReport`
+- Output will be available in same folder as `path` given in json under  `EagleVisionReport`
 
 ## Contact
 

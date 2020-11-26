@@ -27,7 +27,7 @@ class TestResource:
         "report_folder": None
     }
 
-    report = os.path.join(tst_resource_folder, "EagleEyeReport")
+    report = os.path.join(tst_resource_folder, "EagleVisionReport")
     source_path = os.path.join(Path(__file__).parent.parent, "test_resource").replace("\\", "/")
     report_path = os.path.join(Path(__file__).parent.parent).replace("\\", "/")
     json_in = '[{\
@@ -59,7 +59,7 @@ class TestResource:
     def get_result_file_name(folder_name, file_starts):
         """ Function to return file name when sub string name is given"""
         prefixed = [filename for filename in os.listdir(os.path.join(os.path.dirname(__file__),
-                                                                     os.pardir, "test_resource", "EagleEyeReport",
+                                                                     os.pardir, "test_resource", "EagleVisionReport",
                                                                      folder_name))
                     if filename.startswith(file_starts)]
         if not len(prefixed) == 1:
@@ -67,4 +67,4 @@ class TestResource:
             print("unable to identify file")
         else:
             str1 = ''.join(prefixed)
-        return os.path.join(os.path.dirname(__file__), os.pardir, "test_resource", "EagleEyeReport", folder_name, str1)
+        return os.path.join(os.path.dirname(__file__), os.pardir, "test_resource", "EagleVisionReport", folder_name, str1)

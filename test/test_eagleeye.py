@@ -5,8 +5,8 @@ import unittest
 from unittest import mock
 from pathlib import Path
 from test.test_support import TestResource
-from eagleeye.eagleeye import EagleEye
-from eagleeye.eagleeye import create_parser
+from eaglevision.eaglevision import EagleVision
+from eaglevision.eaglevision import create_parser
 
 
 def check_create_parser(option, value):
@@ -14,8 +14,8 @@ def check_create_parser(option, value):
     return create_parser([option, value])
 
 
-class EagleEyeTestCase(unittest.TestCase):
-    """ Class to test the eagleeye.py"""
+class EagleVisionTestCase(unittest.TestCase):
+    """ Class to test the eaglevision.py"""
 
     @classmethod
     def tearDown(cls):
@@ -31,12 +31,12 @@ class EagleEyeTestCase(unittest.TestCase):
                    replace('"run_extraction":true', '"run_extraction":false').
                    replace('"run_cyclomatic_complexity":true', '"run_cyclomatic_complexity":false'))
         file.close()
-        eagleeyeobj = EagleEye(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
-        self.assertEqual(eagleeyeobj.json_path, os.path.join(Path(__file__).parent.parent,
-                                                             "test_resource", "populate.json"))
+        eaglevisionobj = EagleVision(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
+        self.assertEqual(eaglevisionobj.json_path, os.path.join(Path(__file__).parent.parent,
+                                                                "test_resource", "populate.json"))
         mocked_class = mock.Mock()
-        with mock.patch('eagleeye.cloc_eagle.ClocEagle.orchestrate_cloc', mocked_class):
-            eagleeyeobj.eaglewatch()
+        with mock.patch('eaglevision.cloc_eagle.ClocEagle.orchestrate_cloc', mocked_class):
+            eaglevisionobj.eaglewatch()
             self.assertTrue(mocked_class.called)
 
     def test_cyclomatic_eagle_orchestrate_cyclomatic(self):
@@ -47,12 +47,12 @@ class EagleEyeTestCase(unittest.TestCase):
                    replace('"run_extraction":true', '"run_extraction":false').
                    replace('"run_cyclomatic_complexity":true', '"run_cyclomatic_complexity":true'))
         file.close()
-        eagleeyeobj = EagleEye(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
-        self.assertEqual(eagleeyeobj.json_path, os.path.join(Path(__file__).parent.parent,
-                                                             "test_resource", "populate.json"))
+        eaglevisionobj = EagleVision(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
+        self.assertEqual(eaglevisionobj.json_path, os.path.join(Path(__file__).parent.parent,
+                                                                "test_resource", "populate.json"))
         mocked_class = mock.Mock()
-        with mock.patch('eagleeye.cyclomatic_eagle.CyclomaticEagle.orchestrate_cyclomatic', mocked_class):
-            eagleeyeobj.eaglewatch()
+        with mock.patch('eaglevision.cyclomatic_eagle.CyclomaticEagle.orchestrate_cyclomatic', mocked_class):
+            eaglevisionobj.eaglewatch()
             self.assertTrue(mocked_class.called)
 
     def test_similarity_eagle_orchestrate_similarity(self):
@@ -63,12 +63,12 @@ class EagleEyeTestCase(unittest.TestCase):
                    replace('"run_extraction":true', '"run_extraction":false').
                    replace('"run_cyclomatic_complexity":true', '"run_cyclomatic_complexity":false'))
         file.close()
-        eagleeyeobj = EagleEye(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
-        self.assertEqual(eagleeyeobj.json_path, os.path.join(Path(__file__).parent.parent,
-                                                             "test_resource", "populate.json"))
+        eaglevisionobj = EagleVision(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
+        self.assertEqual(eaglevisionobj.json_path, os.path.join(Path(__file__).parent.parent,
+                                                                "test_resource", "populate.json"))
         mocked_class = mock.Mock()
-        with mock.patch('eagleeye.similarity_eagle.SimilarityEagle.orchestrate_similarity', mocked_class):
-            eagleeyeobj.eaglewatch()
+        with mock.patch('eaglevision.similarity_eagle.SimilarityEagle.orchestrate_similarity', mocked_class):
+            eaglevisionobj.eaglewatch()
             self.assertTrue(mocked_class.called)
 
     def test_similarity_eagle_orchestrate_similarity_extraction(self):
@@ -80,12 +80,12 @@ class EagleEyeTestCase(unittest.TestCase):
                    replace('"run_cyclomatic_complexity":true', '"run_cyclomatic_complexity":false'))
         file.close()
 
-        eagleeyeobj = EagleEye(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
-        self.assertEqual(eagleeyeobj.json_path, os.path.join(Path(__file__).parent.parent,
-                                                             "test_resource", "populate.json"))
+        eaglevisionobj = EagleVision(os.path.join(Path(__file__).parent.parent, "test_resource", "populate.json"))
+        self.assertEqual(eaglevisionobj.json_path, os.path.join(Path(__file__).parent.parent,
+                                                                "test_resource", "populate.json"))
         mocked_class = mock.Mock()
-        with mock.patch('eagleeye.similarity_eagle.SimilarityEagle.orchestrate_similarity', mocked_class):
-            eagleeyeobj.eaglewatch()
+        with mock.patch('eaglevision.similarity_eagle.SimilarityEagle.orchestrate_similarity', mocked_class):
+            eaglevisionobj.eaglewatch()
             self.assertTrue(mocked_class.called)
 
     def test_path(self):

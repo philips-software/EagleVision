@@ -17,10 +17,10 @@ cloc:
 
 - cloc package `npm i -g cloc@2.6.0` `https://www.npmjs.com/package/cloc`
 
-EagleEye:
+EagleVision:
 
 ```sh
-pip install EagleEye
+pip install EagleVision
 ```
 
 ## Other tools

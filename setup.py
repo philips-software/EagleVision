@@ -23,17 +23,17 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setuptools.setup(
-    name="EagleEye",
+    name="EagleVision",
     version=get_version(pypi=True),
     author="Brijesh",
     author_email="brijesh.krishnank@philips.com",
-    description="EagleEye",
+    description="EagleVision",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/philips-software/TextSimilarityProcessor",
-    packages=setuptools.find_packages(include=['eagleeye'],
+    packages=setuptools.find_packages(include=['eaglevision'],
                                       exclude=['test', '*.test', '*.test.*']),
-    package_data={'': [r'eagleeye/report_style.css']},
+    package_data={'': [r'eaglevision/report_style.css']},
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",

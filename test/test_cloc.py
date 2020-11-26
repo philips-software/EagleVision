@@ -7,7 +7,7 @@ from io import StringIO
 from pathlib import Path
 from test.test_support import TestResource
 import pandas as pd
-from eagleeye.cloc_eagle import ClocEagle
+from eaglevision.cloc_eagle import ClocEagle
 
 
 class ClocEagleTestCase(unittest.TestCase):

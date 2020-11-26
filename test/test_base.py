@@ -6,7 +6,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import mock_open, Mock, patch
 from test.test_support import TestResource
-from eagleeye.base_eagle import BaseEagle
+from eaglevision.base_eagle import BaseEagle
 
 
 class EagleBaseTestCase(unittest.TestCase):
@@ -83,7 +83,7 @@ class EagleBaseTestCase(unittest.TestCase):
         baseobj._cyclo_exclude = "_cyclo_exclude"
         self.assertEqual(baseobj.get_cyclo_exclude(), "_cyclo_exclude")
         baseobj._report_path = "report_path"
-        self.assertEqual(baseobj.get_report_path(), os.path.join("random_path", "EagleEyeReport"))
+        self.assertEqual(baseobj.get_report_path(), os.path.join("random_path", "EagleVisionReport"))
         baseobj._cloc_args = "_cloc_args"
         self.assertEqual(baseobj.get_cloc_args(), "_cloc_args")
         baseobj._cyclo_args = "_cyclo_args"

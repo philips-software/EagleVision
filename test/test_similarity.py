@@ -7,7 +7,7 @@ from io import StringIO
 from test.test_support import TestResource
 import pandas as pd
 from pandas.util.testing import assert_frame_equal
-from eagleeye.similarity_eagle import SimilarityEagle
+from eaglevision.similarity_eagle import SimilarityEagle
 
 
 class SimilarityEagleTestCase(unittest.TestCase):
