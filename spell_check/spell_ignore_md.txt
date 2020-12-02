@@ -21,10 +21,13 @@ EagleVisionReport
 MERCHANTABILITY
 CHANGELOG
 perl
+substring
 Commandline
 Cyclomatic
 eaglevision
 LOC
+
+
 TBD
 args
 bool
