@@ -20,6 +20,7 @@ EagleVision
 EagleVisionReport
 MERCHANTABILITY
 CHANGELOG
+perl
 Commandline
 Cyclomatic
 eaglevision
