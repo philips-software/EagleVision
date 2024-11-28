@@ -29,8 +29,14 @@ class ClocEagle(BaseEagle): # pylint: disable=R0903
     def __write_cmd(self):
         """ Function to create a batch file to execute cloc """
         file_out = open(os.path.join(self.report_path, "cloc.cmd"), "w")
+        is_windows = sys.platform.startswith('win')
+        if not is_windows:
+            file_out.write("#! /bin/bash")
+            file_out.write("\n")
         file_out.write(self.cmd)
         file_out.close()
+        if not is_windows:
+            os.system("chmod +x %s"%os.path.join(self.report_path, "cloc.cmd"))
 
     def __subprocess_out(self):
         """ Function to execute cloc command """
